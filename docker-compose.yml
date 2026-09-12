@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    ports: ["8080:8080"]
+    depends_on: [redis, db]
+  redis:
+    image: redis:7-alpine
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: local
+      POSTGRES_DB: climbing
